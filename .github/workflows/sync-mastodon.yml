@@ -32,6 +32,7 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
+        id: cpr
         with:
           path: helm-charts
           branch-suffix: short-commit-hash
