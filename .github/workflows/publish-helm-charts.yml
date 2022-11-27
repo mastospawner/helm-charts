@@ -27,4 +27,4 @@ jobs:
         uses: helm/chart-releaser-action@v1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          CR_SKIP_EXISTING: "true"  # if a release already exists for the version, don't try to upload it again
+          # CR_SKIP_EXISTING: "true"  # if a release already exists for the version, don't try to upload it again
