@@ -21,6 +21,6 @@ This is mostly due to Mastodon's helm chart being copied from the upstream repos
 For all charts in this repository, the following is required before being able to use them.
 
 ```bash
-helm repo add https://mastospawner.github.io/helm-charts
+helm repo add mastospawner https://mastospawner.github.io/helm-charts
 helm repo update
 ```
