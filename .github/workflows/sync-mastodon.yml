@@ -30,6 +30,13 @@ jobs:
           cp -r mastodon/chart/* helm-charts/charts/mastodon/
           cp mastodon/LICENSE helm-charts/charts/mastodon/LICENSE
 
+      - name: Apply patches
+        run: |
+          readarray -d '' entries < <(printf '%s\0' patches/mastodon/*.patch | sort -zV)
+          for entry in "${entries[@]}"; do
+            git apply "$patch"
+          done
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         id: cpr

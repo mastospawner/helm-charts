@@ -15,3 +15,12 @@ See each helm chart's readme for instructions on how to get started.
 
 Each helm chart is licensed separately based on the license file in its directory.
 This is mostly due to Mastodon's helm chart being copied from the upstream repository.
+
+## Pre-requisites
+
+For all charts in this repository, the following is required before being able to use them.
+
+```bash
+helm repo add https://mastospawner.github.io/helm-charts
+helm repo update
+```

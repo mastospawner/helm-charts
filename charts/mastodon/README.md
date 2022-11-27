@@ -3,9 +3,9 @@
 This is a [Helm](https://helm.sh/) chart for installing Mastodon into a
 Kubernetes cluster.  The basic usage is:
 
-1. edit `values.yaml` or create a separate yaml file for custom values
-1. `helm dep update`
-1. `helm install --namespace mastodon --create-namespace my-mastodon ./ -f path/to/additional/values.yaml`
+1. Follow pre-requisites from [`README`](../../README.md#pre-requisites)
+1. Create a `values.yaml` with your configured values for this chart
+1. `helm install --namespace mastodon --create-namespace my-mastodon mastospawner/mastodon -f path/to/additional/values.yaml`
 
 This chart is tested with k8s 1.21+ and helm 3.6.0+.
 
