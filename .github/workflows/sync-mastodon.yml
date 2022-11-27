@@ -3,7 +3,7 @@ name: Sync Mastodon
 on:
   workflow_dispatch:
   schedule:
-    - cron: "10 16 * * *"  # 10:00 UTC every day
+    - cron: "15 * * * *"  # 10:00 UTC every day
 
 jobs:
   copy-mastodon-helm-chart:
