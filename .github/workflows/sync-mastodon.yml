@@ -8,6 +8,9 @@ on:
 jobs:
   copy-mastodon-helm-chart:
     name: Copy Mastodon Helm Chart
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Mastodon repo
