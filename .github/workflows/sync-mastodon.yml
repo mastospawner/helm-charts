@@ -1,0 +1,22 @@
+name: Sync Mastodon
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * *"  # 10:00 UTC every day
+
+jobs:
+  copy-mastodon-helm-chart:
+    name: Copy Mastodon Helm Chart
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Mastodon repo
+        uses: actions/checkout@v3
+        with:
+          repository: mastodon/mastodon
+          path: mastodon
+
+      - name: Checkout our repo
+        uses: actions/checkout@v3
+        with:
+          path: helm-charts
