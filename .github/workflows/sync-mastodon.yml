@@ -20,3 +20,21 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: helm-charts
+
+      - name: Copy Helm Chart
+        run: |
+          mkdir -p helm-charts/charts/mastodon  # ensure the directory exists
+          cp -r mastodon/chart/* helm-charts/charts/mastodon/
+          cp mastodon/LICENSE helm-charts/charts/mastodon/LICENSE
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          path: helm-charts
+          branch-suffix: short-commit-hash
+          commit-message: "Sync Mastodon Helm Chart"
+          title: "Sync Mastodon Helm Chart"
+          body: "Sync Mastodon Helm Chart"
+          labels: "dependencies"
+          reviewers: "tizz98"
+          assignees: "tizz98"
