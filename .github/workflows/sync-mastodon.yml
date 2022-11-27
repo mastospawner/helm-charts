@@ -31,6 +31,7 @@ jobs:
           cp mastodon/LICENSE helm-charts/charts/mastodon/LICENSE
 
       - name: Apply patches
+        working-directory: helm-charts
         run: |
           readarray -d '' entries < <(printf '%s\0' patches/mastodon/*.patch | sort -zV)
           for entry in "${entries[@]}"; do
