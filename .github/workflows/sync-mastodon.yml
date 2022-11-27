@@ -35,7 +35,8 @@ jobs:
         run: |
           readarray -d '' entries < <(printf '%s\0' patches/mastodon/*.patch | sort -zV)
           for entry in "${entries[@]}"; do
-            git apply "$patch"
+            echo "Applying patch: $entry"
+            git apply "$entry"
           done
 
       - name: Create Pull Request
