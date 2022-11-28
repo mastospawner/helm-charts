@@ -5,7 +5,9 @@ metadata:
   labels:
     {{- include "mastodon.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.mastodon.streaming.replicas }}
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "mastodon.selectorLabels" . | nindent 6 }}
@@ -13,7 +15,7 @@ spec:
   template:
     metadata:
       annotations:
-        {{- with (default .Values.podAnnotations .Values.mastodon.streaming.podAnnotations) }}
+        {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
         # roll the pods to pick up any db migrations or other changes
@@ -27,13 +29,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "mastodon.serviceAccountName" . }}
-      {{- with (default .Values.podSecurityContext .Values.mastodon.streaming.podSecurityContext) }}
+      {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ .Chart.Name }}-streaming
-          {{- with (default .Values.securityContext .Values.mastodon.streaming.securityContext) }}
+        - name: {{ .Chart.Name }}
+          {{- with .Values.securityContext }}
           securityContext:
             {{- toYaml . | nindent 12 }}
           {{- end }}
@@ -70,7 +72,7 @@ spec:
             httpGet:
               path: /api/v1/streaming/health
               port: streaming
-          {{- with (default .Values.resources .Values.mastodon.streaming.resources) }}
+          {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
@@ -78,7 +80,7 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with (default .Values.affinity .Values.mastodon.streaming.affinity) }}
+      {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
