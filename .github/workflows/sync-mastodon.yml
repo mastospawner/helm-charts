@@ -16,8 +16,8 @@ jobs:
       - name: Checkout Mastodon repo
         uses: actions/checkout@v3
         with:
-          repository: mastodon/mastodon
-          path: mastodon
+          repository: mastodon/chart
+          path: mastodon-chart
 
       - name: Checkout our repo
         uses: actions/checkout@v3
@@ -27,8 +27,7 @@ jobs:
       - name: Copy Helm Chart
         run: |
           mkdir -p helm-charts/charts/mastodon  # ensure the directory exists
-          cp -r mastodon/chart/* helm-charts/charts/mastodon/
-          cp mastodon/LICENSE helm-charts/charts/mastodon/LICENSE
+          cp -r mastodon-chart/* helm-charts/charts/mastodon/
 
       - name: Apply patches
         working-directory: helm-charts
