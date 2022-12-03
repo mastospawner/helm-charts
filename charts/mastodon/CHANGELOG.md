@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0] - 2022-12-03
 ### Added
 - Add support for disabling `PREPARED_STATEMENTS` when connecting to the database (https://github.com/mastodon/chart/pull/5)
 - Add support for setting `ALTERNATE_DOMAINS` (https://github.com/mastodon/chart/pull/2)
