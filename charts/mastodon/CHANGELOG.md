@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Add support for disabling `PREPARED_STATEMENTS` when connecting to the database (https://github.com/mastodon/chart/pull/5)
+
 ## [4.0.0] - 2022-12-03
 ### Added
 - Update mastodon repo from upstream (v4.0.2)
