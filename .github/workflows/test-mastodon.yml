@@ -6,16 +6,19 @@ name: Test Mastodon chart
 on:
   pull_request:
     paths:
+      - '.github/workflows/test-mastodon.yml'
       - 'charts/mastodon/**'
       - '!charts/mastodon/README.md'
       - '!charts/mastodon/CHANGELOG.md'
   push:
     paths:
+      - '.github/workflows/test-mastodon.yml'
       - 'charts/mastodon/**'
       - '!charts/mastodon/README.md'
       - '!charts/mastodon/CHANGELOG.md'
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
+      - '!dependabot/**'
   workflow_dispatch:
 
 permissions:
