@@ -4,7 +4,7 @@
 
 This repository contains helm charts for deploying various Federated applications such as:
 
-- Mastodon
+- [Mastodon](./charts/mastodon/README.md)
 - Pixelfed (soon)
 - Lemmy (soon)
 
