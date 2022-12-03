@@ -1,13 +1,19 @@
 # This is a GitHub workflow defining a set of jobs with a set of steps.
 # ref: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 #
-name: Test chart
+name: Test Mastodon chart
 
 on:
   pull_request:
-    paths-ignore:
-      - "README.md"
+    paths:
+      - 'charts/mastodon/**'
+      - '!charts/mastodon/README.md'
+      - '!charts/mastodon/CHANGELOG.md'
   push:
+    paths:
+      - 'charts/mastodon/**'
+      - '!charts/mastodon/README.md'
+      - '!charts/mastodon/CHANGELOG.md'
     branches-ignore:
       - "dependabot/**"
   workflow_dispatch:
