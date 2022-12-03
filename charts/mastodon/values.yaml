@@ -34,6 +34,9 @@ mastodon:
   # You must redirect the path LOCAL_DOMAIN/.well-known/ to WEB_DOMAIN/.well-known/ as described
   # Example: mastodon.example.com
   web_domain: null
+  # -- If you have multiple domains pointed at your Mastodon server, this setting will allow Mastodon to recognize
+  # itself when users are addressed using those other domains.
+  alternate_domains: []
   # -- If set to true, the frontpage of your Mastodon server will always redirect to the first profile in the database and registrations will be disabled.
   singleUserMode: false
   # -- Enables "Secure Mode" for more details see: https://docs.joinmastodon.org/admin/config/#authorized_fetch
@@ -192,6 +195,9 @@ mastodon:
     statsd:
       # -- Enable statsd publishing via STATSD_ADDR environment variable
       address: ""
+
+  # Sets the PREPARED_STATEMENTS environment variable: https://docs.joinmastodon.org/admin/config/#prepared_statements
+  preparedStatements: true
 
 ingress:
   enabled: true
@@ -360,10 +366,11 @@ externalAuth:
   ldap:
     enabled: false
     # host: myservice.namespace.svc
-    # port: 389
+    # port: 636
     # method: simple_tls
+    # tls_no_verify: true
     # base:
-    # bind_on:
+    # bind_dn:
     # password:
     # uid: cn
     # mail: mail

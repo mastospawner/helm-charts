@@ -15,6 +15,7 @@ data:
   DB_NAME: {{ .Values.postgresql.auth.database }}
   DB_POOL: {{ include "mastodon.maxDbPool" . }}
   DB_USER: {{ .Values.postgresql.auth.username }}
+  PREPARED_STATEMENTS: {{ .Values.mastodon.preparedStatements | quote }}
   DEFAULT_LOCALE: {{ .Values.mastodon.locale }}
   {{- if .Values.elasticsearch.enabled }}
   ES_ENABLED: "true"
@@ -24,6 +25,9 @@ data:
   LOCAL_DOMAIN: {{ .Values.mastodon.local_domain }}
   {{- with .Values.mastodon.web_domain }}
   WEB_DOMAIN: {{ . }}
+  {{- end }}
+  {{- with .Values.mastodon.alternate_domains }}
+  ALTERNATE_DOMAINS: {{ join "," . }}
   {{- end }}
   {{- with .Values.mastodon.singleUserMode }}
   SINGLE_USER_MODE: "true"
@@ -288,13 +292,16 @@ data:
   {{- if .Values.externalAuth.ldap.enabled }}
   LDAP_ENABLED: {{ .Values.externalAuth.ldap.enabled | quote }}
   LDAP_HOST: {{ .Values.externalAuth.ldap.host }}
-  LDAP_PORT: {{ .Values.externalAuth.ldap.port }}
+  LDAP_PORT: {{ .Values.externalAuth.ldap.port | quote }}
   LDAP_METHOD: {{ .Values.externalAuth.ldap.method }}
+  {{- with .Values.externalAuth.ldap.tls_no_verify }}
+  LDAP_TLS_NO_VERIFY: {{ . | quote }}
+  {{- end }}
   {{- with .Values.externalAuth.ldap.base }}
   LDAP_BASE: {{ . }}
   {{- end }}
-  {{- with .Values.externalAuth.ldap.bind_on }}
-  LDAP_BIND_ON: {{ . }}
+  {{- with .Values.externalAuth.ldap.bind_dn }}
+  LDAP_BIND_DN: {{ . }}
   {{- end }}
   {{- with .Values.externalAuth.ldap.password }}
   LDAP_PASSWORD: {{ . }}
