@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add support for various Puma related settings (https://github.com/mastodon/chart/pull/8)
+- Allow setting the `S3_PERMISSION` env var (https://github.com/mastodon/chart/pull/11)
 
 ## [4.1.0] - 2022-12-03
 ### Added
